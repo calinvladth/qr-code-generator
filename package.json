@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Generate a qr code with your wifi credentials",
   "main": "src/index.js",
+  "author": "Calin Vlad <calinvladth@icloud.com> (https://calinvladth.com)",
+  "homepage": "https://github.com/calinvladth/wifi-qr-code-generator",
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/index.js"
@@ -11,5 +13,9 @@
     "express": "^4.21.1",
     "nodemon": "^3.1.7",
     "qrcode": "^1.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:calinvladth/wifi-qr-code-generator.git"
   }
 }

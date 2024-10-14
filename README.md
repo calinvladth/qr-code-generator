@@ -4,12 +4,12 @@ QR code generator.
 
 What does it do?
 It allows you to generate a QR code for the following:
-* phone
-* sms
-* link
-* vcard
-* vcalendar
-* wifi
+* [phone](https://github.com/zxing/zxing/blob/master/core/src/main/java/com/google/zxing/client/result/TelResultParser.java)
+* [sms](https://github.com/zxing/zxing/blob/master/core/src/main/java/com/google/zxing/client/result/SMSParsedResult.java)
+* [link](https://github.com/zxing/zxing/blob/master/core/src/main/java/com/google/zxing/qrcode/QRCodeWriter.java)
+* [vcard](https://www.rfc-editor.org/rfc/rfc6350.html#page-53) 
+* [vcalendar](https://www.rfc-editor.org/rfc/rfc5545#page-146)
+* [wifi](https://github.com/zxing/zxing/blob/master/core/src/main/java/com/google/zxing/client/result/WifiResultParser.java)
 
 To start the project:
 

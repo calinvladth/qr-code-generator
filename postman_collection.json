@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "98633e34-2dcf-4172-afb9-c26eb0362cc0",
+		"name": "QR code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12599289"
+	},
+	"item": [
+		{
+			"name": "Wifi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ssid\": \"DIGI-cpX4\",\n    \"password\": \"cUPajNb7Ag\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/wifi",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"wifi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Link",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"link\": \"https://example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/link",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"link"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VCard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"FirstNameExample\",\n    \"lastName\": \"LastNameExample\",\n    \"fullName\": \"FullNameExample\",\n    \"company\": \"ExampleCompany\",\n    \"title\": \"Example Head of something\",\n    \"phone\": \"0711222333\",\n    \"email\": \"example@examplecompany.com\",\n    \"link\": \"https://example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/vcard",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vcard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SMS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"0711222333\",\n    \"message\": \"Message body example\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/sms",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Phone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"0711222333\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/call",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"call"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VCalendar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Example event\",\n    \"startDate\": \"01.01.2025-09:00\",\n    \"endDate\": \"01.01.2025-09:30\",\n    \"location\": \"home\",\n    \"description\": \"Going for a run example\",\n    \"url\": \"https://example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/vcalendar",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vcalendar"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

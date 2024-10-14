@@ -7,7 +7,9 @@
   "homepage": "https://github.com/calinvladth/wifi-qr-code-generator",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "dependencies": {
     "express": "^4.21.1",
@@ -17,5 +19,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:calinvladth/wifi-qr-code-generator.git"
+  },
+  "devDependencies": {
+    "standard": "^17.1.2"
   }
 }

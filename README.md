@@ -18,7 +18,7 @@ $ yarn install
 $ yarn start
 ```
 
-You can import the postman request found in this repository and you should be ready to go.
+You can import the [postman collection](./postman_collection.json) found in this repository and you should be set.
 
 
 Some example video on generating a WIFI QR Code:

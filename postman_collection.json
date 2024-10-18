@@ -21,11 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/wifi",
+					"raw": "{{URL}}/{{QR_CODE}}/wifi",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
+						"{{QR_CODE}}",
 						"wifi"
 					]
 				}
@@ -47,11 +48,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/link",
+					"raw": "{{URL}}/{{QR_CODE}}/link",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
+						"{{QR_CODE}}",
 						"link"
 					]
 				}
@@ -73,11 +75,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/vcard",
+					"raw": "{{URL}}/{{QR_CODE}}/vcard",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
+						"{{QR_CODE}}",
 						"vcard"
 					]
 				}
@@ -99,11 +102,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/sms",
+					"raw": "{{URL}}/{{QR_CODE}}/sms",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
+						"{{QR_CODE}}",
 						"sms"
 					]
 				}
@@ -125,11 +129,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/call",
+					"raw": "{{URL}}/{{QR_CODE}}/call",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
+						"{{QR_CODE}}",
 						"call"
 					]
 				}
@@ -151,12 +156,40 @@
 					}
 				},
 				"url": {
-					"raw": "{{URL}}/vcalendar",
+					"raw": "{{URL}}/{{QR_CODE}}/vcalendar",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
+						"{{QR_CODE}}",
 						"vcalendar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Custom Barcode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": \"0  123  0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/{{BAR_CODE}}/generate",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"{{BAR_CODE}}",
+						"generate"
 					]
 				}
 			},
@@ -188,6 +221,16 @@
 	"variable": [
 		{
 			"key": "URL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "QR_CODE",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "BAR_CODE",
 			"value": "",
 			"type": "string"
 		}

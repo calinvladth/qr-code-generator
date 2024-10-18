@@ -1,8 +1,7 @@
 const QRCode = require('qrcode')
 
-class QrCodeService {
-  generateVCalendar ({ title, description, startDate, endDate, timezone, location, url }) {
-    return `BEGIN:VCALENDAR
+function generateVCalendar ({ title, description, startDate, endDate, timezone, location, url }) {
+  return `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
 SUMMARY:${title}
@@ -13,10 +12,10 @@ LOCATION:${location}
 URL:${url}
 END:VEVENT
 END:VCALENDAR`
-  }
+}
 
-  generateVCard ({ firstName, lastName, fullName, company, title, phone, email, link }) {
-    return `
+function generateVCard ({ firstName, lastName, fullName, company, title, phone, email, link }) {
+  return `
 BEGIN:VCARD
 VERSION:3.0
 N:${lastName};${firstName};;;
@@ -28,25 +27,31 @@ EMAIL:${email}
 URL:${link}
 END:VCARD
 `
-  }
-
-  generatePhoneCall (phone) {
-    return `tel:${phone}`
-  }
-
-  generateSms ({ phone, message }) {
-    return `sms:${phone}&body=${encodeURIComponent(message)}`
-  }
-
-  generateWifi ({ ssid, password, encryption, hidden }) {
-    return `WIFI:S:${ssid};T:${encryption};P:${password};H:${hidden ? 'true' : ''};;`
-  }
-
-  generateSVG (code, type = 'svg') {
-    return QRCode.toString(code, { type })
-  }
 }
 
-const qrCodeService = new QrCodeService()
+function generatePhoneCall (phone) {
+  return `tel:${phone}`
+}
 
-module.exports = { qrCodeService }
+function generateSms ({ phone, message }) {
+  return `sms:${phone}&body=${encodeURIComponent(message)}`
+}
+
+function generateWifi ({ ssid, password, encryption, hidden }) {
+  return `WIFI:S:${ssid};T:${encryption};P:${password};H:${hidden ? 'true' : ''};;`
+}
+
+function drawSVG (code, type = 'svg') {
+  return QRCode.toString(code, { type })
+}
+
+const QrCodeService = {
+  generateVCalendar,
+  generateVCard,
+  generatePhoneCall,
+  generateSms,
+  generateWifi,
+  drawSVG
+}
+
+module.exports = QrCodeService

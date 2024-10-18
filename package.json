@@ -12,9 +12,11 @@
     "lint:fix": "standard --fix"
   },
   "dependencies": {
+    "bwip-js": "^4.5.1",
     "express": "^4.21.1",
     "nodemon": "^3.1.7",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "short-uuid": "^5.2.0"
   },
   "repository": {
     "type": "git",

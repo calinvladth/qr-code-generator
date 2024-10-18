@@ -1,13 +1,14 @@
 const express = require('express')
 const QrCodeController = require('../controllers/QrCodeController')
+const handleSvgMiddleware = require('../middleware/handleSvgMiddleware')
 
 const router = express.Router()
 
-router.post('/link', QrCodeController.generateLink)
-router.post('/vcard', QrCodeController.generateVCard)
-router.post('/vcalendar', QrCodeController.generateVCalendar)
-router.post('/call', QrCodeController.generateCall)
-router.post('/sms', QrCodeController.generateSms)
-router.post('/wifi', QrCodeController.generateWifi)
+router.post('/link', QrCodeController.generateLink, handleSvgMiddleware)
+router.post('/vcard', QrCodeController.generateVCard, handleSvgMiddleware)
+router.post('/vcalendar', QrCodeController.generateVCalendar, handleSvgMiddleware)
+router.post('/call', QrCodeController.generateCall, handleSvgMiddleware)
+router.post('/sms', QrCodeController.generateSms, handleSvgMiddleware)
+router.post('/wifi', QrCodeController.generateWifi, handleSvgMiddleware)
 
 module.exports = router

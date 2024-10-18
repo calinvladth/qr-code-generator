@@ -1,24 +1,18 @@
 const QrCodeService = require('../services/QrCodeService')
 const { formatDate, getTimezone } = require('../utils/formatDate')
 
-async function generateLink (req, res) {
+async function generateLink (req, res, next) {
   const { link = '' } = req.body
   if (!link) {
     res.status(500).send('Link is missing')
     return
   }
 
-  const svg = await QrCodeService.drawSVG(link)
-  if (!svg) {
-    res.status(500).send('Something went wrong')
-    return
-  }
-
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Length': svg.length })
-  res.end(svg)
+  req.svg = await QrCodeService.drawSVG(link)
+  next()
 }
 
-async function generateVCard (req, res) {
+async function generateVCard (req, res, next) {
   const { firstName = '', lastName = '', fullName = '', company = '', title = '', phone = '', email = '', link = '' } = req.body
   if (!fullName) {
     res.status(500).send('Full name is missing')
@@ -32,17 +26,11 @@ async function generateVCard (req, res) {
 
   const code = QrCodeService.generateVCard({ firstName, lastName, fullName, company, title, phone, email, link })
 
-  const svg = await QrCodeService.drawSVG(code)
-  if (!svg) {
-    res.status(500).send('Something went wrong')
-    return
-  }
-
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Length': svg.length })
-  res.end(svg)
+  req.svg = await QrCodeService.drawSVG(code)
+  next()
 }
 
-async function generateSms (req, res) {
+async function generateSms (req, res, next) {
   const { phone = '', message = '' } = req.body
   if (!phone) {
     res.status(500).send('Phone number is missing')
@@ -55,17 +43,11 @@ async function generateSms (req, res) {
   }
 
   const code = QrCodeService.generateSms({ phone, message })
-  const svg = await QrCodeService.drawSVG(code)
-  if (!svg) {
-    res.status(500).send('Something went wrong')
-    return
-  }
-
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Length': svg.length })
-  res.end(svg)
+  req.svg = await QrCodeService.drawSVG(code)
+  next()
 }
 
-async function generateCall (req, res) {
+async function generateCall (req, res, next) {
   const { phone = '' } = req.body
   if (!phone) {
     res.status(500).send('Phone is missing')
@@ -73,17 +55,11 @@ async function generateCall (req, res) {
   }
 
   const code = QrCodeService.generatePhoneCall(phone)
-  const svg = await QrCodeService.drawSVG(code)
-  if (!svg) {
-    res.status(500).send('Something went wrong')
-    return
-  }
-
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Length': svg.length })
-  res.end(svg)
+  req.svg = await QrCodeService.drawSVG(code)
+  next()
 }
 
-async function generateVCalendar (req, res) {
+async function generateVCalendar (req, res, next) {
   const { title = '', startDate = '', endDate = '', location = '', description = '', url = '' } = req.body
 
   if (!title) {
@@ -105,16 +81,11 @@ async function generateVCalendar (req, res) {
 
   const code = QrCodeService.generateVCalendar({ title, description, startDate: startDateFormatted, endDate: endDateFormatter, timezone, location, url })
 
-  const svg = await QrCodeService.drawSVG(code)
-  if (!svg) {
-    res.status(500).send('Something went wrong')
-  }
-
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Length': svg.length })
-  res.end(svg)
+  req.svg = await QrCodeService.drawSVG(code)
+  next()
 }
 
-async function generateWifi (req, res) {
+async function generateWifi (req, res, next) {
   const { ssid = '', password = '', encryption = 'WPA', hidden = false } = req.body
   if (!ssid) {
     res.status(500).send('SSID is missing')
@@ -123,14 +94,8 @@ async function generateWifi (req, res) {
 
   const code = QrCodeService.generateWifi({ ssid, password, encryption, hidden })
 
-  const svg = await QrCodeService.drawSVG(code)
-  if (!svg) {
-    res.status(500).send('Something went wrong')
-    return
-  }
-
-  res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Length': svg.length })
-  res.end(svg)
+  req.svg = await QrCodeService.drawSVG(code)
+  next()
 }
 
 const QrCodeController = {

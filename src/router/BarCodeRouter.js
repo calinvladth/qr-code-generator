@@ -1,10 +1,9 @@
 const express = require('express')
+const handleSVGMiddleware = require('../middleware/handleSvgMiddleware')
 
 const router = express.Router()
+const BarCodeController = require('../controllers/BarCodeController')
 
-// TODO: Handle routes from here
-router.get('/test', (req, res) => {
-  res.send('Bar code test')
-})
+router.post('/generate', BarCodeController.generateBarcode, handleSVGMiddleware)
 
 module.exports = router

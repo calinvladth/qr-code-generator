@@ -1,4 +1,4 @@
-const QRCode = require('qrcode')
+const bwipjs = require('bwip-js')
 
 function generateVCalendar ({ title, description, startDate, endDate, timezone, location, url }) {
   return `BEGIN:VCALENDAR
@@ -41,8 +41,11 @@ function generateWifi ({ ssid, password, encryption, hidden }) {
   return `WIFI:S:${ssid};T:${encryption};P:${password};H:${hidden ? 'true' : ''};;`
 }
 
-function drawSVG (code, type = 'svg') {
-  return QRCode.toString(code, { type })
+function drawSVG (code) {
+  return bwipjs.toSVG({
+    bcid: 'qrcode',
+    text: code
+  })
 }
 
 const QrCodeService = {

@@ -2,11 +2,11 @@ const bwipjs = require('bwip-js')
 
 function generateSVG (data) {
   return bwipjs.toSVG({
-    bcid: 'code128', // Barcode type
-    text: data, // Text to encode
-    height: 12, // Bar height, in millimeters
-    includetext: true, // Show human-readable text
-    textxalign: 'center', // Always good to set this
+    bcid: 'code128',
+    text: data,
+    height: 12,
+    includetext: true,
+    textxalign: 'center',
     textcolor: 'ff0000'
   })
 }
